@@ -1,0 +1,32 @@
+export const TECH_DICTIONARY = {
+  languages: [
+    "TypeScript",
+    "JavaScript",
+    "Go",
+    "Rust",
+    "C",
+    "C++",
+    "Python",
+    "PHP",
+    "Java",
+    "SQL",
+    "Zig",
+    "Mojo",
+  ],
+
+  frameworks: [
+    "React",
+    "Next.js",
+    "Express",
+    "NestJS",
+    "Swoole",
+    "Laravel",
+    "Fastify",
+    "Vue",
+    "Angular",
+    "Actix-web",
+    "Axum",
+    "Hono",
+    "FastAPI",
+  ],
+};
