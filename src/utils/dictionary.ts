@@ -41,4 +41,16 @@ export const TECH_DICTIONARY = {
     "Cloudflare",
     "Vercel",
   ],
+
+  databases: [
+    "PostgreSQL",
+    "Redis",
+    "MongoDB",
+    "ClickHouse",
+    "SurrealDB",
+    "Elasticsearch",
+    "SQLite",
+    "MariaDB",
+    "DynamoDB",
+  ],
 };
