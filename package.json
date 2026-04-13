@@ -1,0 +1,36 @@
+{
+  "name": "gael",
+  "version": "1.0.0",
+  "description": "This project is still under work so calma and wait  ```bash Gael/ ├── src/ │   ├── core/ │   │   ├── extractor.ts      # Handles PDF/Docx to String │   │   ├── parser.ts         # Heuristics & Regex logic │   │   └── sanitizer.ts      # Clean up messy text │   ├── types/ │   │   └── resume.ts         # Zod schemas & TS interfaces │   ├── utils/ │   │   └── pattern-match.ts  # Regex constants │   ├── index.ts              # Entry point (Express/Fastify) │   └── app.ts                # App configuration ├── uploads/                  # Temporary storage for files ├── .env                      # Configuration ├── package.json └── tsconfig.json ```",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phantekzy/Gael.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/phantekzy/Gael/issues"
+  },
+  "homepage": "https://github.com/phantekzy/Gael#readme",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/multer": "^2.1.0",
+    "@types/node": "^25.6.0",
+    "@types/pdf-parse": "^1.1.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mammoth": "^1.12.0",
+    "multer": "^2.1.1",
+    "pdf-parse": "^2.4.5",
+    "zod": "^4.3.6"
+  }
+}
