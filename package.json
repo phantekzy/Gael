@@ -1,6 +1,7 @@
 {
   "name": "gael",
   "version": "1.0.0",
+  "description": "Resume Parser API",
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
