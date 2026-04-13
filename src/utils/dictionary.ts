@@ -53,4 +53,17 @@ export const TECH_DICTIONARY = {
     "MariaDB",
     "DynamoDB",
   ],
+  tools: [
+    "Git",
+    "Linux",
+    "Neovim",
+    "Hyprland",
+    "Postman",
+    "Obsidian",
+    "Tmux",
+    "Zsh",
+    "Fish",
+    "GDB",
+    "LLDB",
+  ],
 };
