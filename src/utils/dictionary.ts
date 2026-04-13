@@ -80,4 +80,13 @@ export const TECH_DICTIONARY = {
     "OOP",
     "Functional Programming",
   ],
+  softSkills: [
+    "Agile",
+    "Leadership",
+    "Communication",
+    "Problem Solving",
+    "Management",
+    "Mentoring",
+    "Public Speaking",
+  ],
 };
