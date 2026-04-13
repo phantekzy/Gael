@@ -13,7 +13,6 @@ export const TECH_DICTIONARY = {
     "Zig",
     "Mojo",
   ],
-
   frameworks: [
     "React",
     "Next.js",
@@ -41,7 +40,6 @@ export const TECH_DICTIONARY = {
     "Cloudflare",
     "Vercel",
   ],
-
   databases: [
     "PostgreSQL",
     "Redis",
@@ -66,7 +64,6 @@ export const TECH_DICTIONARY = {
     "GDB",
     "LLDB",
   ],
-
   concepts: [
     "Microservices",
     "Serverless",
