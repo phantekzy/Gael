@@ -57,7 +57,10 @@ export const ResumeSchema = z.object({
   skills: z.object({
     languages: z.array(z.string()),
     frameworks: z.array(z.string()),
+    infrastructure: z.array(z.string()),
+    databases: z.array(z.string()),
     tools: z.array(z.string()),
+    concepts: z.array(z.string()),
     softSkills: z.array(z.string()),
   }),
   projects: z
