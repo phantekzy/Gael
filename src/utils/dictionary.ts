@@ -29,4 +29,16 @@ export const TECH_DICTIONARY = {
     "Hono",
     "FastAPI",
   ],
+  infrastructure: [
+    "Docker",
+    "Kubernetes",
+    "AWS",
+    "GCP",
+    "Azure",
+    "Terraform",
+    "Ansible",
+    "Nginx",
+    "Cloudflare",
+    "Vercel",
+  ],
 };
