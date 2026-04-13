@@ -66,4 +66,18 @@ export const TECH_DICTIONARY = {
     "GDB",
     "LLDB",
   ],
+
+  concepts: [
+    "Microservices",
+    "Serverless",
+    "Event-Driven",
+    "REST",
+    "gRPC",
+    "GraphQL",
+    "WebSockets",
+    "CI/CD",
+    "TDD",
+    "OOP",
+    "Functional Programming",
+  ],
 };
