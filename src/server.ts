@@ -33,3 +33,8 @@ app.post(
     }
   },
 );
+
+const PORT = process.env.PORT!;
+app.listen(PORT, () => {
+  console.log(`Xael API running on http://localhost:${PORT}`);
+});
