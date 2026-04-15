@@ -5,14 +5,10 @@ export class ResumeParser {
     const text = Sanitizer.clean(rawText);
     const lines = text.split("\n").filter((l) => l.length > 0);
 
-    const email =
-      text
-        .match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/)?.[0]
-        ?.toLowerCase() || "phantekzy@email.com";
-
-    const phone =
-      text.match(
-        /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/,
-      )?.[0] || null;
+    const fixUrl = (url: string | null | undefined) => {
+      if (!url) return null;
+      const cleanUrl = url.trim();
+      return cleanUrl.startsWith("http") ? cleanUrl : `https://${cleanUrl}`;
+    };
   }
 }
