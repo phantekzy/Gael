@@ -55,5 +55,10 @@ export class ResumeParser {
       certifications: [],
     };
   }
-  private static findSkills(text: string, list: string[]): string[] {}
+  private static findSkills(text: string, list: string[]): string[] {
+    return list.filter((s) => {
+      const escaped = s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return new RegExp(`\\b${escaped}\\b`, "i").test(text);
+    });
+  }
 }
