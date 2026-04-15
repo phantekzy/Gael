@@ -23,5 +23,23 @@ export class ResumeParser {
       text.match(
         /(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}/,
       )?.[0] || null;
+
+    return {
+      name: {
+        firstName,
+        lastName,
+        middleName: undefined,
+        title: lines[1] || "Software Engineer",
+      },
+      contact: {
+        email,
+        phone,
+        location: {
+          city: null,
+          country: null,
+          remoteWork: true,
+        },
+      },
+    };
   }
 }
