@@ -14,6 +14,7 @@ app.post(
         req.file.path,
         req.file.mimetype,
       );
+      return res.json(validatedData);
     } catch (error) {}
   },
 );
