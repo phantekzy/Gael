@@ -1,6 +1,8 @@
+import "dotenv/config";
 import { Request, Response } from "express";
 import app, { upload } from "./app.js";
 import { ResumeService } from "./resume.service.js";
+import fs from "fs/promises";
 
 app.post(
   "api/parse",
@@ -24,6 +26,10 @@ app.post(
       return res
         .status(500)
         .json({ error: error.message || "Internal Server Error" });
+    } finally {
+      if (req.file) {
+        await fs.unlink(req.file.path).catch(() => {});
+      }
     }
   },
 );
