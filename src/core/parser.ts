@@ -1,3 +1,4 @@
+import { TECH_DICTIONARY } from "../utils/dictionary.js";
 import { Sanitizer } from "./sanitizer.js";
 
 export class ResumeParser {
@@ -53,6 +54,16 @@ export class ResumeParser {
       education: [],
       projects: [],
       certifications: [],
+
+      skills: {
+        languages: this.findSkills(text, TECH_DICTIONARY.languages),
+        frameworks: this.findSkills(text, TECH_DICTIONARY.frameworks),
+        infrastructure: this.findSkills(text, TECH_DICTIONARY.infrastructure),
+        databases: this.findSkills(text, TECH_DICTIONARY.databases),
+        tools: this.findSkills(text, TECH_DICTIONARY.tools),
+        concepts: this.findSkills(text, TECH_DICTIONARY.concepts),
+        softSkills: this.findSkills(text, TECH_DICTIONARY.softSkills),
+      },
     };
   }
   private static findSkills(text: string, list: string[]): string[] {
