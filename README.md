@@ -1,7 +1,7 @@
-# Gael Resume Parser
+# Xael Resume Parser
 This project is still under work so calma and wait 
 ```bash
-Gael/
+Xael/
 ├── src/
 │   ├── core/
 │   │   ├── extractor.ts      # Handles PDF/Docx to String
