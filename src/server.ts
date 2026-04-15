@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { upload } from "./app.js";
+import app, { upload } from "./app.js";
 import { ResumeService } from "./resume.service.js";
 
 app.post(
