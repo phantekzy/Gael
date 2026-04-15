@@ -48,6 +48,11 @@ export class ResumeParser {
         portfolio: null,
         other: [],
       },
+      summary: lines.slice(2, 6).join(" ").substring(0, 1200) || null,
+      experience: [],
+      education: [],
+      projects: [],
+      certifications: [],
     };
   }
 }
