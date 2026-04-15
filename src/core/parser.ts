@@ -55,4 +55,5 @@ export class ResumeParser {
       certifications: [],
     };
   }
+  private static findSkills(text: string, list: string[]): string[] {}
 }
