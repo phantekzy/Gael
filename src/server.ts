@@ -15,6 +15,15 @@ app.post(
         req.file.mimetype,
       );
       return res.json(validatedData);
-    } catch (error) {}
+    } catch (error: any) {
+      if (error.name === "ZodError") {
+        return res
+          .status(422)
+          .json({ error: "Schema Validation Error", details: error.errors });
+      }
+      return res
+        .status(500)
+        .json({ error: error.message || "Internal Server Error" });
+    }
   },
 );
