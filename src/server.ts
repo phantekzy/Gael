@@ -5,7 +5,7 @@ import { ResumeService } from "./resume.service.js";
 import fs from "fs/promises";
 
 app.post(
-  "api/parse",
+  "/api/parse",
   upload.single("resume"),
   async (req: Request, res: Response) => {
     try {
