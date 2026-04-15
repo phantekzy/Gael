@@ -34,7 +34,7 @@ app.post(
   },
 );
 
-const PORT = process.env.PORT!;
+const PORT = parseInt(process.env.PORT || "3000", 10);
 app.listen(PORT, () => {
   console.log(`Xael API running on http://localhost:${PORT}`);
 });
