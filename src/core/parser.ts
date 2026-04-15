@@ -40,6 +40,14 @@ export class ResumeParser {
           remoteWork: true,
         },
       },
+      links: {
+        linkedin: fixUrl(
+          text.match(/linkedin\.com\/in\/[a-zA-Z0-9-]{3,100}/i)?.[0],
+        ),
+        github: fixUrl(text.match(/github\.com\/[a-zA-Z0-9-]{1,100}/i)?.[0]),
+        portfolio: null,
+        other: [],
+      },
     };
   }
 }
