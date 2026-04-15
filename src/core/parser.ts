@@ -10,5 +10,9 @@ export class ResumeParser {
       const cleanUrl = url.trim();
       return cleanUrl.startsWith("http") ? cleanUrl : `https://${cleanUrl}`;
     };
+
+    const nameParts = lines[0]?.split(" ") || ["Unknown"];
+    const firstName = nameParts[0];
+    const lastName = nameParts.slice(1).join(" ") || "User";
   }
 }
