@@ -1,8 +1,23 @@
-import * as pdfjs from "pdfjs-dist";
+import * as pdfjs from "pdfjs-dist/legacy/build/pdf.mjs";
+import mammoth from "mammoth";
 
 export class Extractor {
-  static async toText(buffer: Uint8Array): Promise<string> {
-    const loadingTask = pdfjs.getDocument({ data: buffer });
+  static async toText(buffer: Buffer, mimetype: string): Promise<string> {
+    if (
+      mimetype ===
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    ) {
+      const { value } = await mammoth.extractRawText({ buffer });
+      return value;
+    }
+
+    const uint8Array = new Uint8Array(buffer);
+    const loadingTask = pdfjs.getDocument({
+      data: uint8Array,
+      useSystemFonts: true,
+      isEvalSupported: false,
+    });
+
     const pdf = await loadingTask.promise;
     let fullText = "";
 
@@ -26,12 +41,15 @@ export class Extractor {
         const columnItems = columns[x].sort(
           (a, b) => b.transform[5] - a.transform[5],
         );
+
         columnItems.forEach((item) => {
           fullText += item.str + " ";
         });
+
         fullText += "\n";
       });
     }
+
     return fullText;
   }
 }
