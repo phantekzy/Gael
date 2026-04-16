@@ -12,7 +12,9 @@ export class Extractor {
 
       const columns: { [key: number]: any[] } = {};
       content.items.forEach((item: any) => {
-        const x = Math.round(item.transform[4] / 50) * 50; // Grouping by 50px chunks
+        const x = Math.round(item.transform[4] / 50) * 50;
+        if (!columns[x]) columns[x] = [];
+        columns[x].push(item);
       });
     }
   }
