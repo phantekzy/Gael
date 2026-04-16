@@ -11,6 +11,7 @@ export class Extractor {
       const content = await page.getTextContent();
 
       const columns: { [key: number]: any[] } = {};
+
       content.items.forEach((item: any) => {
         const x = Math.round(item.transform[4] / 50) * 50;
         if (!columns[x]) columns[x] = [];
@@ -31,5 +32,6 @@ export class Extractor {
         fullText += "\n";
       });
     }
+    return fullText;
   }
 }
