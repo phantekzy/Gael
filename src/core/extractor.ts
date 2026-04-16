@@ -5,5 +5,10 @@ export class Extractor {
     const loadingTask = pdfjs.getDocument({ data: buffer });
     const pdf = await loadingTask.promise;
     let fullText = "";
+
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const page = await pdf.getPage(i);
+      const content = await page.getTextContent();
+    }
   }
 }
