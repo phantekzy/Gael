@@ -12,7 +12,6 @@ export class ResumeParser {
     const extractSocials = () => {
       const links: any = { linkedin: null, github: null, portfolio: null };
       const words = text.split(/\s+/);
-
       const socialTriggers = /github|linkedin|portfolio|website|link/i;
 
       words.forEach((word, i) => {
@@ -44,6 +43,7 @@ export class ResumeParser {
         projects: [],
         education: [],
       };
+
       let currentSection = "summary";
       let blockBuffer: string[] = [];
 
@@ -60,7 +60,7 @@ export class ResumeParser {
 
         if (isHeader) {
           if (blockBuffer.length > 0)
-            processBlock(currentSection, blockBuffer, sections);
+            this.processBlock(currentSection, blockBuffer, sections);
 
           if (headers.experience.test(line)) currentSection = "experience";
           else if (headers.projects.test(line)) currentSection = "projects";
@@ -73,50 +73,8 @@ export class ResumeParser {
         }
       });
 
-      processBlock(currentSection, blockBuffer, sections);
+      this.processBlock(currentSection, blockBuffer, sections);
       return sections;
-    };
-
-    const processBlock = (type: string, lines: string[], target: any) => {
-      if (type === "summary") {
-        target.summary = lines.join(" ").trim();
-      } else if (
-        type === "experience" ||
-        type === "projects" ||
-        type === "education"
-      ) {
-        target[type] = buildItems(lines);
-      }
-    };
-
-    const buildItems = (segment: string[]) => {
-      const items: any[] = [];
-      let active: any = null;
-
-      segment.forEach((line) => {
-        const isAnchor =
-          line.match(/\d{4}/) || (line.length < 55 && !line.endsWith("."));
-
-        if (isAnchor) {
-          if (active) items.push(active);
-          active = {
-            name: line.replace(/^[•●▪-]\s*/, "").trim(),
-            description: "",
-            technologies: [],
-          };
-        } else if (active) {
-          active.description += " " + line;
-        }
-      });
-      if (active) items.push(active);
-      return items.map((it) => ({
-        ...it,
-        description: it.description.trim(),
-        technologies: this.scan(it.description, [
-          ...TECH_DICTIONARY.languages,
-          ...TECH_DICTIONARY.frameworks,
-        ]),
-      }));
     };
 
     const blocks = classifyBlocks();
@@ -160,9 +118,50 @@ export class ResumeParser {
       metadata: {
         rawTextLength: text.length,
         processedAt: new Date().toISOString(),
-        version: "17.0.0-ai-heuristic",
+        version: "2.0.0-spatial-heuristic",
       },
     };
+  }
+
+  private static processBlock(type: string, lines: string[], target: any) {
+    if (type === "summary") {
+      target.summary = lines.join(" ").trim();
+    } else if (["experience", "projects", "education"].includes(type)) {
+      target[type] = this.buildItems(lines);
+    }
+  }
+
+  private static buildItems(segment: string[]) {
+    const items: any[] = [];
+    let active: any = null;
+
+    segment.forEach((line) => {
+      // Anchors: Dates or short capitalized strings (likely Job Titles/Project Names)
+      const isAnchor =
+        line.match(/\d{4}/) || (line.length < 55 && !line.endsWith("."));
+
+      if (isAnchor) {
+        if (active) items.push(active);
+        active = {
+          name: line.replace(/^[•●▪-]\s*/, "").trim(),
+          description: "",
+          technologies: [],
+        };
+      } else if (active) {
+        active.description += " " + line;
+      }
+    });
+
+    if (active) items.push(active);
+
+    return items.map((it) => ({
+      ...it,
+      description: it.description.trim(),
+      technologies: this.scan(it.description, [
+        ...TECH_DICTIONARY.languages,
+        ...TECH_DICTIONARY.frameworks,
+      ]),
+    }));
   }
 
   private static scan(t: string, list: string[]): string[] {
