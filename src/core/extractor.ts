@@ -20,6 +20,16 @@ export class Extractor {
       const sortedX = Object.keys(columns)
         .map(Number)
         .sort((a, b) => a - b);
+
+      sortedX.forEach((x) => {
+        const columnItems = columns[x].sort(
+          (a, b) => b.transform[5] - a.transform[5],
+        );
+        columnItems.forEach((item) => {
+          fullText += item.str + " ";
+        });
+        fullText += "\n";
+      });
     }
   }
 }
