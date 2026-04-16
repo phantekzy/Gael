@@ -9,6 +9,11 @@ export class Extractor {
     for (let i = 1; i <= pdf.numPages; i++) {
       const page = await pdf.getPage(i);
       const content = await page.getTextContent();
+
+      const columns: { [key: number]: any[] } = {};
+      content.items.forEach((item: any) => {
+        const x = Math.round(item.transform[4] / 50) * 50; // Grouping by 50px chunks
+      });
     }
   }
 }
