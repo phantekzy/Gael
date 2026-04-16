@@ -16,6 +16,10 @@ export class Extractor {
         if (!columns[x]) columns[x] = [];
         columns[x].push(item);
       });
+
+      const sortedX = Object.keys(columns)
+        .map(Number)
+        .sort((a, b) => a - b);
     }
   }
 }
